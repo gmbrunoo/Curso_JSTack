@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Button from "./Buttom";
+import Button from "../Buttom";
 
 function PostHeader(props) {
   return (

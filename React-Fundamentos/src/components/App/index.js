@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Post from "./Post";
-import Header from "./Header";
-import ThemeProvider from "./ThemeContext";
+import Post from "../Post";
+import Header from "../Header";
+import ThemeProvider from "../../context/ThemeContext";
 
-import styles from "./App.scss"
+import { Subtitle } from "./styles";
 
 function App() {
   // hooks
@@ -49,17 +49,17 @@ function App() {
   }
 
   function handleRemovePost(postId) {
-    setPosts((prevState) => prevState.map(
-      post => (
-        post.id === postId ? {...post, removed: true} : post
+    setPosts((prevState) =>
+      prevState.map((post) =>
+        post.id === postId ? { ...post, removed: true } : post
       )
-    ));
+    );
   }
 
   return (
     <ThemeProvider>
       <Header>
-        <h2 className= {styles.title}>Posts da semana</h2>
+        <Subtitle as="h2">Posts da semana</Subtitle>
         <button onClick={handleRefresh}>Atualizar</button>
       </Header>
 

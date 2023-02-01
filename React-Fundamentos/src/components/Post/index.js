@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import PostHeader from "./PostHeader";
 
-import styles from './Post.scss'
+import { Container, Subtitle, Rate } from "./styles";
 
 function Post(props) {
   // if (props.post.read) {
@@ -12,22 +12,19 @@ function Post(props) {
   // }
 
   return (
-      <article className={ 
-        props.post.removed ? styles.postDeleted : styles.post
-      }>
-        <PostHeader 
-          onRemove= {props.onRemove}
-          post= {{
-            id: props.post.id,
-            title: props.post.title,
-            read: props.post.read,
-          }}
-        />
-        <br />
-        <small> {props.post.subtitle}</small>
-        <br />
-        <small> Likes: {props.post.likes * 2}</small>
-      </article>
+    <Container removed={props.post.removed}>
+      <PostHeader
+        onRemove={props.onRemove}
+        post={{
+          id: props.post.id,
+          title: props.post.title,
+          read: props.post.read,
+        }}
+      />
+
+      <Subtitle> {props.post.subtitle}</Subtitle>
+      <Rate> Likes: {props.post.likes * 2}</Rate>
+    </Container>
   );
 }
 
@@ -39,7 +36,7 @@ Post.propTypes = {
     subtitle: PropTypes.string.isRequired,
     likes: PropTypes.number.isRequired,
     read: PropTypes.bool.isRequired,
-    removed: PropTypes.bool.isRequired
+    removed: PropTypes.bool.isRequired,
   }).isRequired,
 };
 
